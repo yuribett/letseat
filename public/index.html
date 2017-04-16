@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="letseat">
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Let's Lunch</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		
+		<script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/lib/angular-resource.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/controllers/identification-controller.js"></script>
+		<script src="js/controllers/poll-controller.js"></script>
+		
+	</head>
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h1 class="text-center">Let's Eat!</h1>
+			</div>
+			<ng-view></ng-view>
+
+		</div>
+	</body>
+</html>

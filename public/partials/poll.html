@@ -1,0 +1,15 @@
+<div class="container">
+  <h6 style="text-align: center">{{winnerMsg}}</h6>
+
+  <h3 style="text-align: center">Where do you wanna eat today?</h3>
+
+  <div class="row" ng-repeat="restaurant in restaurants">
+    <button type="button" class="btn btn-primary btn-block" ng-click="vote(restaurant)" ng-disabled="restaurant.winner || restaurant.alreadyVotedByUser">{{restaurant.name}} - Votes: {{restaurant.score}} </button>
+    <small ng-show="restaurant.winner">{{restaurant.name}} already won this week ;)<br></small>
+    <small ng-show="restaurant.alreadyVotedByUser">You've already voted on {{restaurant.name}} ;)<br></small>
+    <br>
+  </div>
+
+  <a href="/identification">Switch uer</a>
+
+</div>
