@@ -1,4 +1,4 @@
-angular.module('letseat', ['ngRoute'])
+angular.module('letseat', ['customDirectives', 'ngRoute'])
 	.config(function ($routeProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);

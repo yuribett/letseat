@@ -1,4 +1,4 @@
 <div class="container">
-    <h3 style="text-align: center">Who are you?</h3>
-    <a href="/poll/{{user._id}}" ng-repeat="user in users" type="button" class="btn btn-default btn-lg btn-block">{{user.name}}</a>
+    <page-title value="Who are you?"></page-title>
+    <button-link-default url="/poll/{{user._id}}"  ng-repeat="user in users" value="{{user.name}}"></button-link-default>
 </div>
