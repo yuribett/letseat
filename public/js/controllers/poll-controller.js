@@ -4,48 +4,30 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
 
     $scope.restaurants = [];
     $scope.winnerMsg = '';
-
-    restaurantResource.get({user: $routeParams.user}, restaurants => {
-		$scope.restaurants = restaurants;
-        setWinnerMsg(restaurants);
-	}, err => {
-		console.log(erro);
-	});
-
-    /*
-    $http.get("/api/restaurant/"+userID)
-        .then((response) => {
-            $scope.restaurants = response.data;
-            setWinnerMsg(response.data);
-        })
-        .catch(err => console.log(err));
-*/
+    refreshRestaurants();
 
     $scope.vote = (restaurant) => {
         const restaurantID = restaurant._id;
         
-        pollResource.update({
+        pollResource.save({
             user: userID,
             restaurant: restaurantID
-        }, () => {
-            $scope.restaurants = response.data;
-            setWinnerMsg(response.data);
+        }, vote => {
+            refreshRestaurants();
         }, err => {
             console.log(err);
         });
 
-        /*
-        $http.put("/api/poll", {
-            user: userID,
-            restaurant: restaurantID
-        })
-        
-            .then(response => {
-                $scope.restaurants = response.data;
-                setWinnerMsg(response.data);
-            }).catch(err => console.log(err));
-        */
     };
+
+    function refreshRestaurants() {
+        restaurantResource.query({user: $routeParams.user}, restaurants => {
+            $scope.restaurants = restaurants;
+            setWinnerMsg(restaurants);
+        }, err => {
+            console.log(erro);
+        });
+    }
 
     function setWinnerMsg(list) {
         let clone = list.slice(0);

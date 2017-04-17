@@ -32,11 +32,7 @@ module.exports = app => {
             } else {
                 vote.dtKey = dtKey;
                 app.data.poll.push(vote);
-                app.dao.restaurant.list(vote.user)
-                    .then(restaurants => {
-                        resolve(restaurants);
-                    })
-                    .catch(err => reject(err));
+                resolve(vote);
             }
 
         });
@@ -72,7 +68,7 @@ module.exports = app => {
     dao.getWeekWinners = week => {
         let weekWinners = [2,4];
         
-        /*
+        
         let arrWeek = [];
 
         arrWeek = app.data.poll.filter(votePoll => {
@@ -94,7 +90,7 @@ module.exports = app => {
                 }
             });
         });
-        */
+        
         
         return weekWinners;
     }

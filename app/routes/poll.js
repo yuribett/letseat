@@ -5,7 +5,7 @@ module.exports = app => {
     app.route('/api/poll')
         .get(controller.list);
 
-    app.route('/api/poll/')
-        .put(controller.vote);
+    app.route('/api/poll')
+        .post(controller.vote);
 
 };
