@@ -1,35 +1,50 @@
-angular.module('letseat').controller('PollController', function ($scope, $http, $routeParams) {
+angular.module('letseat').controller('PollController', function ($scope, $http, $routeParams, restaurantResource, pollResource) {
 
     const userID = parseInt($routeParams.user);
-
-    console.log(userID);
 
     $scope.restaurants = [];
     $scope.winnerMsg = '';
 
+    restaurantResource.get({user: $routeParams.user}, restaurants => {
+		$scope.restaurants = restaurants;
+        setWinnerMsg(restaurants);
+	}, err => {
+		console.log(erro);
+	});
+
+    /*
     $http.get("/api/restaurant/"+userID)
         .then((response) => {
             $scope.restaurants = response.data;
             setWinnerMsg(response.data);
         })
         .catch(err => console.log(err));
-
-    $scope.checkPermission = () => {
-
-    };
+*/
 
     $scope.vote = (restaurant) => {
         const restaurantID = restaurant._id;
         
+        pollResource.update({
+            user: userID,
+            restaurant: restaurantID
+        }, () => {
+            $scope.restaurants = response.data;
+            setWinnerMsg(response.data);
+        }, err => {
+            console.log(err);
+        });
+
+        /*
         $http.put("/api/poll", {
             user: userID,
             restaurant: restaurantID
         })
+        
             .then(response => {
                 $scope.restaurants = response.data;
                 setWinnerMsg(response.data);
             }).catch(err => console.log(err));
-
+        */
     };
 
     function setWinnerMsg(list) {

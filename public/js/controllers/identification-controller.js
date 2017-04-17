@@ -1,10 +1,11 @@
-angular.module('letseat').controller('IdentificationController', function($scope, $http) {
+angular.module('letseat').controller('IdentificationController', function($scope, $http, userResource) {
 	
 	$scope.users = [];
 
-    $http.get("/api/user")
-        .then(function(response) {
-            $scope.users = response.data;
-        });
+    userResource.query(users => {
+		$scope.users = users;
+	}, err => {
+		console.log(erro);
+	});
 
 });

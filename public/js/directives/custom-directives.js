@@ -1,5 +1,5 @@
 angular.module('customDirectives', [])
-    .directive('buttonLinkDefault', function() {
+    .directive('buttonLinkDefault', () => {
         var ddo = {};
         ddo.restrict = "E";
         ddo.scope = {
@@ -10,7 +10,7 @@ angular.module('customDirectives', [])
 
         return ddo;
     })
-    .directive('buttonPrimary', function() {
+    .directive('buttonPrimary', () => {
         var ddo = {};
         ddo.restrict = "E";
         ddo.scope = {
@@ -22,7 +22,7 @@ angular.module('customDirectives', [])
 
         return ddo;
     })
-    .directive('pageTitle', function() {
+    .directive('pageTitle', () => {
         var ddo = {};
         ddo.restrict = "AE";
         ddo.scope = {
