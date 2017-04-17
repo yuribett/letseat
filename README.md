@@ -1,6 +1,6 @@
 # Let's Eat
 
-### Let's Eat is an app to democrately decide where to lunch with your friends
+### Let's Eat is an app to democrately decide where to eat with your friends
 
 ## Prerequisites
 
