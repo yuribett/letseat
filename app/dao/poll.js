@@ -55,45 +55,12 @@ module.exports = app => {
         });
 
         //user story 2
-        //if(!denied && dao.getWeekWinners.contains(newVote.restaurant)){
-        //   denied = true
-        //}
+        if(!denied && app.dao.winners.list().indexOf(newVote.restaurant) > -1){
+           denied = true
+        }
 
         return denied;
     };
-
-    /**
-     * TODO
-     */
-    dao.getWeekWinners = week => {
-        let weekWinners = [2,4];
-        
-        
-        let arrWeek = [];
-
-        arrWeek = app.data.poll.filter(votePoll => {
-            if(weekYear === week){
-                return;
-            }
-        });
-
-        let arrRest = [];
-
-        app.data.restaurant.forEach(restaurant => {
-            let score = 0;
-            let arrRestWeek = [];
-            arrWeek.forEach(vote => {
-                if (vote.restaurant === restaurant._id) {
-                    
-                    vote.dtKey
-                    score++;
-                }
-            });
-        });
-        
-        
-        return weekWinners;
-    }
 
     return dao;
 };

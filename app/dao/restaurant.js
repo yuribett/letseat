@@ -10,7 +10,7 @@ module.exports = app => {
 
             app.data.restaurant.map(restaurant => {
                 restaurant.score = app.dao.poll.getScoreByRestaurant(restaurant._id);
-                restaurant.winner = app.dao.poll.getWeekWinners().indexOf(restaurant._id) > -1;
+                restaurant.winner = app.dao.winners.list().indexOf(restaurant._id) > -1;
                 
                 let alreadyVoted = false;
                 app.data.poll.forEach(vote => {

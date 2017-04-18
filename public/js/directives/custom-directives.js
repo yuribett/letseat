@@ -6,7 +6,7 @@ angular.module('customDirectives', [])
             value: '@',
             url : '@'
         }
-        ddo.template = '<a href="{{url}}" type="button" class="btn btn-default btn-lg btn-block">{{value}}</a>';
+        ddo.template = '<a href="{{url}}" type="button" class="btn btn-default btn-lg btn-block" style="margin-bottom: 3px;">{{value}}</a>';
 
         return ddo;
     })

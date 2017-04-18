@@ -25,7 +25,7 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
             $scope.restaurants = restaurants;
             setWinnerMsg(restaurants);
         }, err => {
-            console.log(erro);
+            console.log(err);
         });
     }
 
