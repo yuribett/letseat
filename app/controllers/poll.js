@@ -6,11 +6,7 @@ module.exports = app => {
     const dao = app.dao.poll;
 
     api.list = (req, res) => {
-        dao.list().then(polls => {
-            res.status(200).json(polls);
-        }, error => {
-            res.sendStatus(500);
-        });
+        res.status(200).json(dao.list());
     };
 
     api.vote = (req, res) => {
@@ -22,7 +18,7 @@ module.exports = app => {
 
         const vote = req.body;
         dao.vote(vote).then(polls => {
-            res.status(200).json(polls);
+            res.status(201).json(polls);
         }, error => {
             logger.error(error);
             res.sendStatus(400);

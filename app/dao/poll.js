@@ -10,10 +10,6 @@ module.exports = app => {
         return app.data.poll;
     };
 
-    dao.getWinner = () => {
-
-    };
-
     dao.getScoreByRestaurant = (restaurantID) => {
         let score = 0;
         dao.list().forEach(vote => {
