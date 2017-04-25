@@ -30,6 +30,7 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
     }
 
     function setWinnerMsg(list) {
+        console.log(list);
         let clone = list.slice(0);
         clone.sort( (a, b) => { return (a.score < b.score) ? 1 : ((b.score < a.score) ? -1 : 0); });
         if(clone[0].score === 0){
