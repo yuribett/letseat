@@ -19,7 +19,7 @@ module.exports = function (config) {
       'public/js/lib/angular-mocks.js',
       'public/js/lib/angular-resource.min.js',
       'public/js/lib/angular-route.min.js',
-      'public/js/*.js',
+      'public/js/main.js',
       'public/js/controllers/*.js',
       'public/js/directives/*.js',
       'public/js/services/*.js',

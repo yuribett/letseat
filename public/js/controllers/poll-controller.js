@@ -4,6 +4,7 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
 
     $scope.restaurants = [];
     $scope.winnerMsg = '';
+    $scope.lastVote = {};
     refreshRestaurants();
 
     $scope.vote = (restaurant) => {
@@ -13,6 +14,7 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
             user: userID,
             restaurant: restaurantID
         }, vote => {
+            $scope.lastVote = vote;
             refreshRestaurants();
         }, err => {
             console.log(err);
@@ -23,14 +25,13 @@ angular.module('letseat').controller('PollController', function ($scope, $http, 
     function refreshRestaurants() {
         restaurantResource.query({user: $routeParams.user}, restaurants => {
             $scope.restaurants = restaurants;
-            setWinnerMsg(restaurants);
+            $scope.setWinnerMsg(restaurants);
         }, err => {
             console.log(err);
         });
     }
 
-    function setWinnerMsg(list) {
-        console.log(list);
+    $scope.setWinnerMsg = (list) => {
         let clone = list.slice(0);
         clone.sort( (a, b) => { return (a.score < b.score) ? 1 : ((b.score < a.score) ? -1 : 0); });
         if(clone[0].score === 0){
